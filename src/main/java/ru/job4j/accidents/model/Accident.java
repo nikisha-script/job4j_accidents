@@ -18,4 +18,6 @@ public class Accident {
     @NonNull
     private String address;
 
+    private AccidentType type;
+
 }

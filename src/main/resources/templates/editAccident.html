@@ -55,6 +55,9 @@
             <label for="inputAddress">Address</label>
             <input type="text" class="form-control" name="address" id="address" th:field="*{address}">
           </div>
+          <select name="type">
+                <option th:each="type : ${types}" th:value="${type.name}" th:text="${type.name}">
+           </select>
             <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
 

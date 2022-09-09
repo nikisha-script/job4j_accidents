@@ -16,6 +16,7 @@ public class AccidentMem {
     public AccidentMem() {
         this.accidents = new HashMap<>();
         this.id = 1;
+
     }
 
     public List<Accident> getAllAccident() {
