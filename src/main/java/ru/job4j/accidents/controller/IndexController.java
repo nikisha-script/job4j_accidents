@@ -38,6 +38,7 @@ public class IndexController {
     public String replace(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", "Danil Nikishin");
         model.addAttribute("accident", service.findById(id));
+
         return "editAccident";
     }
 
