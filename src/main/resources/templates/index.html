@@ -38,6 +38,18 @@
             </span>
           </div>
         </nav>
+
+        <div class="card-deck">
+          <div class="card" th:each="accident: ${accidents}">
+            <img class="card-img-top" src="https://st.depositphotos.com/1000291/4222/i/600/depositphotos_42220569-stock-photo-car-crash-collision-in-winter.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title" th:text="${accident.name}"></h5>
+              <p class="card-text" th:text="${accident.text}"></p>
+              <p class="card-text" th:text="${accident.address}"><small class="text-muted"></small></p>
+            </div>
+          </div>
+        </div>
+
     </div>
 </body>
 </html>
