@@ -10,16 +10,28 @@ import java.util.Map;
 @Repository
 public class AccidentMem {
 
-    Map<Integer, Accident> accidents;
+    private final Map<Integer, Accident> accidents;
+    private int id;
 
     public AccidentMem() {
         this.accidents = new HashMap<>();
-        accidents.put(1, new Accident("Авария один", "Легкая авария", "Ул.Пупкина 12"));
-        accidents.put(2, new Accident("Авария два", "авария", "Ул.Васькина 24"));
-        accidents.put(3, new Accident("Авария три", "Тяжелая авария", "Ул.Иванова 13"));
+        this.id = 1;
     }
 
     public List<Accident> getAllAccident() {
         return accidents.values().stream().toList();
+    }
+
+    public void addAccident(Accident accident) {
+        accident.setId(id);
+        accidents.put(id++, accident);
+    }
+
+    public void updateAccident(int id, Accident accident) {
+        accidents.replace(id, accident);
+    }
+
+    public Accident findById(int id) {
+        return accidents.get(id);
     }
 }

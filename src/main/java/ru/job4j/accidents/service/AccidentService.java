@@ -19,4 +19,16 @@ public class AccidentService {
         return store.getAllAccident();
     }
 
+    public void addAccident(Accident accident) {
+        store.addAccident(accident);
+    }
+
+    public void updateAccident(int id, Accident accident) {
+        store.updateAccident(id, accident);
+    }
+
+    public Accident findById(int id) {
+        return store.findById(id);
+    }
+
 }
