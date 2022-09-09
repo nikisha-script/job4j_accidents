@@ -57,6 +57,9 @@
           <select name="type">
                  <option th:each="type : ${types}" th:value="${type.name}" th:text="${type.name}">
           </select>
+          <select name="rule" multiple="multiple">
+                 <option th:each="rule : ${rules}" th:value="${rule.name}" th:text="${rule.name}">
+           </select>
             <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
 

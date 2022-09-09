@@ -2,6 +2,10 @@ package ru.job4j.accidents.model;
 
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -19,5 +23,7 @@ public class Accident {
     private String address;
 
     private AccidentType type;
+
+    private List<Rule> rules;
 
 }
