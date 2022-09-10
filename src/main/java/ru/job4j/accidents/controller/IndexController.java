@@ -10,7 +10,6 @@ import ru.job4j.accidents.service.AccidentService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
