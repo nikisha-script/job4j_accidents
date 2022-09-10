@@ -20,13 +20,6 @@ public class AccidentMem {
     public AccidentMem() {
         this.accidents = new HashMap<>();
         this.id = new AtomicInteger(1);
-        init();
-    }
-
-    private void init() {
-        accidents.put(id.get(), new Accident(id.getAndIncrement(), "Test", "Test", "Test"));
-        accidents.put(id.get(), new Accident(id.getAndIncrement(), "Test", "Test", "Test"));
-        accidents.put(id.get(), new Accident(id.getAndIncrement(), "Test", "Test", "Test"));
     }
 
     public List<Accident> getAllAccident() {

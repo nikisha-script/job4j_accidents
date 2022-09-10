@@ -2,7 +2,6 @@ package ru.job4j.accidents.model;
 
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,7 +13,6 @@ import java.util.List;
 public class Accident {
 
     @EqualsAndHashCode.Include
-    @NonNull
     private int id;
     @NonNull
     private String name;
