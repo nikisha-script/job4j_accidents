@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.Rule;
+import ru.job4j.accidents.repository.AccidentHibernate;
 import ru.job4j.accidents.repository.AccidentJdbcTemplate;
 import ru.job4j.accidents.service.AccidentService;
 
@@ -15,9 +16,9 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-    private AccidentJdbcTemplate service;
+    private AccidentHibernate service;
 
-    public IndexController(AccidentJdbcTemplate service) {
+    public IndexController(AccidentHibernate service) {
         this.service = service;
     }
 
