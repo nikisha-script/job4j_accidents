@@ -27,12 +27,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user").password(passwordEncoder.encode("123")).roles("USER")
                 .and()
                 .withUser("admin").password(passwordEncoder.encode("123")).roles("USER", "ADMIN");*/
-        auth.jdbcAuthentication()
+
+        /*auth.jdbcAuthentication()
                 .dataSource(ds)
                 .withUser(User.withUsername("qq")
-                        .password(passwordEncoder().encode("qq"))
-                        .roles("ADMIN"));
+                        .password(passwordEncoder().encode("123"))
+                        .roles("ADMIN"));*/
 
+        auth.jdbcAuthentication().dataSource(ds)
+                .usersByUsernameQuery("select username, password, enabled "
+                        + "from users "
+                        + "where username = ?")
+                .authoritiesByUsernameQuery(
+                        " select u.username, a.authority "
+                                + "from authorities as a, users as u "
+                                + "where u.username = ? and u.authority_id = a.id");
     }
 
     @Bean
@@ -44,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/login")
+                .antMatchers("/login", "/reg")
                 .permitAll()
                 .antMatchers("/**")
                 .hasAnyRole("ADMIN", "USER")
