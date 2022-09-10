@@ -52,6 +52,7 @@ public class AccidentMem {
     public List<Rule> getRyles() {
         rules.put(1, Rule.of(1, "Статья. 1"));
         rules.put(2, Rule.of(2, "Статья. 2"));
+
         rules.put(3, Rule.of(3, "Статья. 3"));
         return rules.values().stream().toList();
     }
