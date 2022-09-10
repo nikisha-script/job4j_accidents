@@ -6,23 +6,24 @@ import ru.job4j.accidents.model.Accident;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class AccidentMem {
 
     private final Map<Integer, Accident> accidents;
-    private int id;
+    private AtomicInteger id;
 
     public AccidentMem() {
         this.accidents = new HashMap<>();
-        this.id = 1;
+        this.id = new AtomicInteger(1);
         init();
     }
 
     private void init() {
-        accidents.put(id, new Accident(id++, "Test", "Test", "Test"));
-        accidents.put(id, new Accident(id++, "Test", "Test", "Test"));
-        accidents.put(id, new Accident(id++, "Test", "Test", "Test"));
+        accidents.put(id.get(), new Accident(id.getAndIncrement(), "Test", "Test", "Test"));
+        accidents.put(id.get(), new Accident(id.getAndIncrement(), "Test", "Test", "Test"));
+        accidents.put(id.get(), new Accident(id.getAndIncrement(), "Test", "Test", "Test"));
     }
 
     public List<Accident> getAllAccident() {
@@ -30,8 +31,8 @@ public class AccidentMem {
     }
 
     public void addAccident(Accident accident) {
-        accident.setId(id);
-        accidents.put(id++, accident);
+        accident.setId(id.get());
+        accidents.put(id.getAndIncrement(), accident);
     }
 
     public void updateAccident(int id, Accident accident) {
