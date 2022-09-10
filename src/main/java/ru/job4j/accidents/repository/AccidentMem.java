@@ -2,7 +2,9 @@ package ru.job4j.accidents.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Accident;
+import ru.job4j.accidents.model.AccidentType;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,5 +43,13 @@ public class AccidentMem {
 
     public Accident findById(int id) {
         return accidents.get(id);
+    }
+
+    public List<AccidentType> getTypes() {
+        List<AccidentType> types = new ArrayList<>();
+        types.add(AccidentType.of(1, "Две машины"));
+        types.add(AccidentType.of(2, "Машина и человек"));
+        types.add(AccidentType.of(3, "Машина и велосипед"));
+        return types;
     }
 }

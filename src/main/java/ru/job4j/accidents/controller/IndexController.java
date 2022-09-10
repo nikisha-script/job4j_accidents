@@ -30,7 +30,7 @@ public class IndexController {
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("types", getTypes());
+        model.addAttribute("types", service.getTypes());
         model.addAttribute("rules", getRyles());
         model.addAttribute("user", "Danil Nikishin");
         return "createAccident";
@@ -52,7 +52,7 @@ public class IndexController {
     public String replace(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", "Danil Nikishin");
         model.addAttribute("accident", service.findById(id));
-        model.addAttribute("types", getTypes());
+        model.addAttribute("types", service.getTypes());
         return "editAccident";
     }
 
@@ -60,14 +60,6 @@ public class IndexController {
     public String updateAccident(@ModelAttribute Accident accident, @RequestParam("id") int id) {
         service.updateAccident(id, accident);
         return "redirect:/index";
-    }
-
-    private List<AccidentType> getTypes() {
-        List<AccidentType> types = new ArrayList<>();
-        types.add(AccidentType.of(1, "Две машины"));
-        types.add(AccidentType.of(2, "Машина и человек"));
-        types.add(AccidentType.of(3, "Машина и велосипед"));
-        return types;
     }
 
     private List<Rule> getRyles() {
