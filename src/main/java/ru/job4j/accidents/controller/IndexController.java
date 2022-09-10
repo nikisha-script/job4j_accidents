@@ -7,6 +7,7 @@ import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.Rule;
 import ru.job4j.accidents.repository.AccidentHibernate;
 import ru.job4j.accidents.repository.AccidentJdbcTemplate;
+import ru.job4j.accidents.repository.AccidentRepositoryDataSpring;
 import ru.job4j.accidents.service.AccidentService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,16 +17,18 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-    private AccidentHibernate service;
+    private AccidentRepositoryDataSpring service;
 
-    public IndexController(AccidentHibernate service) {
+    public IndexController(AccidentRepositoryDataSpring service) {
         this.service = service;
     }
 
     @GetMapping("/index")
     public String index(Model model) {
+        List<Accident> res = new ArrayList<>();
+        service.findAll().forEach(res::add);
         model.addAttribute("user", "Danil Nikishin");
-        model.addAttribute("accidents", service.getAll());
+        model.addAttribute("accidents", res);
         return "index";
     }
 
