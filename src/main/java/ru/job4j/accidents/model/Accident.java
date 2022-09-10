@@ -14,6 +14,7 @@ import java.util.List;
 public class Accident {
 
     @EqualsAndHashCode.Include
+    @NonNull
     private int id;
     @NonNull
     private String name;

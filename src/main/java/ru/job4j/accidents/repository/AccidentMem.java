@@ -16,7 +16,13 @@ public class AccidentMem {
     public AccidentMem() {
         this.accidents = new HashMap<>();
         this.id = 1;
+        init();
+    }
 
+    private void init() {
+        accidents.put(id, new Accident(id++, "Test", "Test", "Test"));
+        accidents.put(id, new Accident(id++, "Test", "Test", "Test"));
+        accidents.put(id, new Accident(id++, "Test", "Test", "Test"));
     }
 
     public List<Accident> getAllAccident() {
