@@ -3,8 +3,10 @@ package ru.job4j.accidents.service;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.AccidentType;
+import ru.job4j.accidents.model.Rule;
 import ru.job4j.accidents.repository.AccidentMem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,6 +36,10 @@ public class AccidentService {
 
     public List<AccidentType> getTypes() {
         return store.getTypes();
+    }
+
+    public List<Rule> getRyles() {
+        return store.getRyles();
     }
 
 }

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.accidents.model.Accident;
-import ru.job4j.accidents.model.AccidentType;
 import ru.job4j.accidents.model.Rule;
 import ru.job4j.accidents.service.AccidentService;
 
@@ -31,7 +30,7 @@ public class IndexController {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("types", service.getTypes());
-        model.addAttribute("rules", getRyles());
+        model.addAttribute("rules", service.getRyles());
         model.addAttribute("user", "Danil Nikishin");
         return "createAccident";
     }
@@ -62,12 +61,5 @@ public class IndexController {
         return "redirect:/index";
     }
 
-    private List<Rule> getRyles() {
-        List<Rule> rules = new ArrayList<>();
-        rules.add(Rule.of(1, "Статья. 1"));
-        rules.add(Rule.of(2, "Статья. 2"));
-        rules.add(Rule.of(3, "Статья. 3"));
-        return rules;
-    }
 
 }
