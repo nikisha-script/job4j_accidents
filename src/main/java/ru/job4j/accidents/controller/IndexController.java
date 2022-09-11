@@ -43,8 +43,8 @@ public class IndexController {
     public String save(@ModelAttribute Accident accident,
                        @RequestParam("typeid") String idType,
                        @RequestParam("ruleid") List<String> idRule) {
-        accident.setType(service.findTypeById(Integer.parseInt(idType)));
-        idRule.forEach(s -> accident.getRules().add(service.findRuleById(Integer.parseInt(s))));
+        accident.setType(service.findTypeById(Integer.parseInt(idType)).get());
+        idRule.forEach(s -> accident.getRules().add(service.findRuleById(Integer.parseInt(s)).get()));
         service.addAccident(accident);
         return "redirect:/index";
     }
@@ -66,8 +66,8 @@ public class IndexController {
     public String updateAccident(@ModelAttribute Accident accident,
                                  @RequestParam("typee") String idType,
                                  @RequestParam("rulee") List<String> idRule) {
-        accident.setType(service.findTypeById(Integer.parseInt(idType)));
-        idRule.forEach(s -> accident.getRules().add(service.findRuleById(Integer.parseInt(s))));
+        accident.setType(service.findTypeById(Integer.parseInt(idType)).get());
+        idRule.forEach(s -> accident.getRules().add(service.findRuleById(Integer.parseInt(s)).get()));
         service.updateAccident(accident);
         return "redirect:/index";
     }
