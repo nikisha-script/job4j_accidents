@@ -25,6 +25,7 @@ public class AccidentMem {
         types.put(1, AccidentType.of(1, "Две машины"));
         types.put(2, AccidentType.of(2, "Машина и человек"));
         types.put(3, AccidentType.of(3, "Машина и велосипед"));
+
         rules.put(1, Rule.of(1, "Статья. 1"));
         rules.put(2, Rule.of(2, "Статья. 2"));
         rules.put(3, Rule.of(3, "Статья. 3"));
