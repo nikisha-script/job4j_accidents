@@ -2,14 +2,22 @@ package ru.job4j.accidents.model;
 
 import lombok.*;
 
+import javax.persistence.*;
+
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @RequiredArgsConstructor
+@Entity
+@Table(name = "rules")
 public class Rule {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private int id;
+
     @NonNull
     private String name;
 

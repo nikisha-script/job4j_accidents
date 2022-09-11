@@ -41,12 +41,11 @@
             <img class="card-img-top" src="https://st.depositphotos.com/1000291/4222/i/600/depositphotos_42220569-stock-photo-car-crash-collision-in-winter.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title" th:text="${accident.name}"></h5>
-              <p class="card-text" th:text="${accident.text}"></p>
+              <p class="card-text" th:text="${accident.address}"></p>
               <p class="card-text" th:text="${accident.type.name}"></p>
               <div class="card-text" th:each="rule: ${accident.rules}">
                     <p class="card-text" th:text="${rule.name}"></p>
               </div>
-              <p class="card-text" th:text="${accident.address}"><small class="text-muted"></small></p>
             </div>
             <a th:href="@{|/replace/${accident.id}|}" class="btn btn-primary">Replace</a>
           </div>
