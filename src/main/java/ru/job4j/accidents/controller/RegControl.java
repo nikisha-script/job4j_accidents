@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.job4j.accidents.model.User;
-import ru.job4j.accidents.repository.AuthorityRepository;
-import ru.job4j.accidents.repository.UserRepository;
+import ru.job4j.accidents.repository.dataspring.AuthorityRepository;
+import ru.job4j.accidents.repository.dataspring.UserRepository;
 
 @Controller
 public class RegControl {

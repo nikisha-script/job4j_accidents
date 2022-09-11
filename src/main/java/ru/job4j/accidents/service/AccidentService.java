@@ -1,34 +1,35 @@
 package ru.job4j.accidents.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.AccidentType;
 import ru.job4j.accidents.model.Rule;
-import ru.job4j.accidents.repository.AccidentHibernate;
-import ru.job4j.accidents.repository.AccidentJdbcTemplate;
+import ru.job4j.accidents.repository.dataspring.AccidentRepositoryDataSpring;
+import ru.job4j.accidents.repository.dataspring.RuleRepo;
+import ru.job4j.accidents.repository.dataspring.TypeRepo;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class AccidentService {
 
-    private AccidentHibernate store;
-
-    public AccidentService(AccidentHibernate store) {
-        this.store = store;
-    }
+    private AccidentRepositoryDataSpring store;
+    private RuleRepo ruleRepo;
+    private TypeRepo typeRepo;
 
     public List<Accident> getAllAccident() {
         return store.getAllAccident();
     }
 
     public void addAccident(Accident accident) {
-        store.addAccident(accident);
+        store.save(accident);
     }
 
     public void updateAccident(Accident accident) {
-        store.updateAccident(accident);
+        store.save(accident);
     }
 
     public Optional<Accident> findById(int id) {
@@ -36,19 +37,19 @@ public class AccidentService {
     }
 
     public List<AccidentType> getTypes() {
-        return store.getTypes();
+        return typeRepo.findAll();
     }
 
     public List<Rule> getRyles() {
-        return store.getRules();
+        return ruleRepo.findAll();
     }
 
     public Optional<AccidentType> findTypeById(int id) {
-        return store.findTypeById(id);
+        return typeRepo.findById(id);
     }
 
     public Optional<Rule> findRuleById(int id) {
-        return store.findRuleById(id);
+        return ruleRepo.findById(id);
     }
 
 }
