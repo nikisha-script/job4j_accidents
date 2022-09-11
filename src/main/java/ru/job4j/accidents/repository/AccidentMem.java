@@ -22,6 +22,12 @@ public class AccidentMem {
         this.accidents = new HashMap<>();
         this.rules = new HashMap<>();
         this.types = new HashMap<>();
+        types.put(1, AccidentType.of(1, "Две машины"));
+        types.put(2, AccidentType.of(2, "Машина и человек"));
+        types.put(3, AccidentType.of(3, "Машина и велосипед"));
+        rules.put(1, Rule.of(1, "Статья. 1"));
+        rules.put(2, Rule.of(2, "Статья. 2"));
+        rules.put(3, Rule.of(3, "Статья. 3"));
         this.id = new AtomicInteger(1);
     }
 
@@ -43,17 +49,10 @@ public class AccidentMem {
     }
 
     public List<AccidentType> getTypes() {
-        types.put(1, AccidentType.of(1, "Две машины"));
-        types.put(2, AccidentType.of(2, "Машина и человек"));
-        types.put(3, AccidentType.of(3, "Машина и велосипед"));
         return types.values().stream().toList();
     }
 
     public List<Rule> getRyles() {
-        rules.put(1, Rule.of(1, "Статья. 1"));
-        rules.put(2, Rule.of(2, "Статья. 2"));
-
-        rules.put(3, Rule.of(3, "Статья. 3"));
         return rules.values().stream().toList();
     }
 }
